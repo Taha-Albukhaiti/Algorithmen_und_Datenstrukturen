@@ -12,10 +12,18 @@ public class MainDemo {
         int[] arr = {9, 3, 22, 49, 100};
         int[] arrI = {9, 3, 2, 1, 100};
        // arr = insertionSortAbsteigend(arr);
-        int[] arrII = addArrays(arr, arrI);
-        selectionSortII(arrII);
-        for (int i = 0; i < arrII.length; i++) {
-            System.out.print(arrII[i] + "\t");
+       // int[] arrII = addArrays(arr, arrI);
+
+       for (int i = 0; i < 1000000; i++) {
+           
+           final long timeStart = System.currentTimeMillis();
+           selectionSortII(arrI);
+           final long timeEnd = System.currentTimeMillis();
+       }
+
+
+        for (int i = 0; i < arrI.length; i++) {
+            System.out.print(arrI[i] + "\t");
         }
         System.out.println();
         System.out.println(serachLike(arr, 33));
