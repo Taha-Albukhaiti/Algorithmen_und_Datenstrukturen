@@ -14,7 +14,7 @@ public class Mergesort {
             liftArray[i] = arr[l + i];
         }
         for (j = 0; j < rechtArray.length; j++){
-            rechtArray[j] = arr[m + 1+ j];
+            rechtArray[j] = arr[m + 1 + j];
         }
         i = j = 0;
         k = l;
@@ -50,7 +50,7 @@ public class Mergesort {
     }
 
     public static void main(String[] args) {
-        int[] arr = {9, 3, 22, 49, 100, 2, 1, 12};
+        int[] arr = {9, 3, 22, 49, 100, 2, 1, 12, 4};
         mergesort(arr, 0, arr.length - 1);
         Arrays.stream(arr).forEach(System.out::println);
     }
