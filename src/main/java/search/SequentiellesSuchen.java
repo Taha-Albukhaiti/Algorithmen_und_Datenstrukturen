@@ -28,8 +28,8 @@ public class SequentiellesSuchen {
     public static int binaerSuche(int[] arr, int gesuchtesWert) {
         Arrays.sort(arr);
         int l = 0;
-        int r = arr.length;//l-r-i
-        while (l < r) { // 1-12-6, 1-6-3, 4-6-5, 4-5-4, 5-5-5
+        int r = arr.length;
+        while (l < r) {
             int i = (l + r) / 2;
             if (arr[i] == gesuchtesWert) return i;
             else if (arr[i] < gesuchtesWert) l = i + 1;
