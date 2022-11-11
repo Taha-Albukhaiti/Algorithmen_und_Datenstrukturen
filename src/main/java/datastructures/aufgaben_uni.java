@@ -9,17 +9,17 @@ public class aufgaben_uni {
         int largest = 0;
         int z = arr[0];
         for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr.length; j++) {
+            for (int j = i; j < arr.length; j++) {
                 if (arr[i] == arr[j]) {
                     if ((j - i) > largest) {
                         largest = j - i;
                         z = arr[j];
-                        System.out.println("L = " + largest + ", z = " + z);
+                        //System.out.println("L = " + largest + ", z = " + z);
                     }
                 }
             }
         }
-        System.out.println(largest);
+        //System.out.println(largest);
         return z;
     }
 

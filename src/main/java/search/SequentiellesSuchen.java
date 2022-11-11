@@ -41,8 +41,8 @@ public class SequentiellesSuchen {
     public static int binaerSucheFirst(int[] arr, int gesuchtesWert) {
         Arrays.sort(arr);
         int l = 0;
-        int r = arr.length;
-        while (l <= r) {
+        int r = arr.length -1;
+        while (l < r) {
             int i = (l + r) / 2;
             if (arr[i] < gesuchtesWert) l = i + 1;
             else r = i;
@@ -72,7 +72,7 @@ public class SequentiellesSuchen {
 
     public static void main(String[] args) {
         int[] arr = new int[]{3, 4, 1, 5, 17, 11, 2};
-        System.out.println(binaerSuche(arr, 222));
+        System.out.println(binaerSucheFirst(arr, 5));
 
     }
 }

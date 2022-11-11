@@ -1,9 +1,5 @@
 package datastructures;
 
-import java.util.Arrays;
-
-import static datastructures.Binary_Search.binary_search;
-import static datastructures.InsertionSort.insertionSort;
 import static datastructures.InsertionSort.*;
 import static datastructures.SelectionSort.*;
 

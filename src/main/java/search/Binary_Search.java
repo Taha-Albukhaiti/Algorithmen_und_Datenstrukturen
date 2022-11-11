@@ -1,4 +1,4 @@
-package datastructures;
+package search;
 
 import java.util.List;
 

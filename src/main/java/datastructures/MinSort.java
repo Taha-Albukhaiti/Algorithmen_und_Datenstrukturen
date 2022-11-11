@@ -1,4 +1,4 @@
-package com.taha_albukhaiti.algorithmen_und_datenstrukturen;
+package datastructures;
 
 public class MinSort {
 
