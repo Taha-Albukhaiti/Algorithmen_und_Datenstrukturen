@@ -1,7 +1,7 @@
-package datastructures;
+package sorting;
 
-import static datastructures.InsertionSort.*;
-import static datastructures.SelectionSort.*;
+import static sorting.InsertionSort.*;
+import static sorting.SelectionSort.*;
 
 public class MainDemo {
    public static void main(String[] args) {
