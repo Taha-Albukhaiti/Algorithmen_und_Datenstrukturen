@@ -11,22 +11,22 @@ public class Heap {
     public Heap(int[] arr) {
         this.arr = arr;
         this.heapSize = arr.length;
-        this.buildMaxHeap();
+        // this.buildMaxHeap();
     }
 
     private int left(int i) {
-        return i == 0 ? 1 : 2 * i;
+        return (2 * i) + 1;
     }
 
     private int right(int i) {
-        return i == 0 ? 2 : 2 * i + 1;
+        return (2 * i) + 2;
     }
 
     private int parent(int i) {
-        return i != 1 && i != 2 ? i / 2 : 0;
+        return (i - 1) / 2;
     }
 
-    private void maxHeapify(int i) {
+    protected void maxHeapify(int i) {// Θ(n log n) Θ(n)
         int l = left(i);
         int r = right(i);
         int max;
@@ -47,7 +47,7 @@ public class Heap {
 
     }
 
-    private void minHeapify(int i) {
+    protected void minHeapify(int i) {
         int l = this.left(i);
         int r = this.right(i);
         int min;
@@ -56,8 +56,7 @@ public class Heap {
         } else {
             min = i;
         }
-
-        if (r < heapSize && this.arr[r] < arr[min]) {
+        if (r < heapSize && arr[r] < arr[min]) {
             min = r;
         }
 
@@ -74,7 +73,7 @@ public class Heap {
         arr[b] = temp;
     }
 
-    protected void buildMaxHeap() {
+    protected void buildMaxHeap() { // O(log n)
         for (int i = (this.heapSize - 1) / 2; i >= 0; --i) {
             this.maxHeapify(i);
         }
@@ -89,14 +88,30 @@ public class Heap {
     }
 
     protected void heapSort() {
-        for (int i = heapSize - 1; i >= 1; --i) {
-            swap(this.arr, 0, i);
+        for (int i = heapSize - 1; i >= 1; i--) {
+            swap(arr, 0, i);
             heapSize--;
             maxHeapify(0);
         }
 
     }
+    protected int search(int x) {
+        int i = 0;
+        while ((i <= heapSize && arr[i] != x)) i++;
+        if (arr[i] == x) return i;
+        return 0;
+    }
 
+    protected int getSize() {
+        return heapSize;
+    }
+
+
+    // ----------- Prioritätswarteschlange -----------
+    /**
+     *
+     * @return
+     */
     protected int delete() {
         int max = arr[0];
         arr[0] = arr[heapSize - 1];
@@ -117,31 +132,38 @@ public class Heap {
         arr[i] = wert;
         while (i > 1 && arr[parent(i)] < arr[i]) {
             swap(arr, i, parent(i));
+            i = parent(i);
         }
 
     }
 
     protected void insert(int k) {
+
         if (heapSize < arr.length) {
-            heapSize += 1;
+            heapSize++;
             arr[heapSize - 1] = 0;
             increaseKey(heapSize - 1, k);
+        }else {
+            System.out.println("Heap Size ist nicht kleiner als Array.length");
         }
     }
 
-    protected int getSize() {
-        return heapSize;
-    }
+
 }
 
 class HeapSort {
 
     public static void main(String[] args) {
-        int[] heap = new int[]{16, 4, 10, 14, 7, 9, 3, 2, 8, 1};
+        int[] heap = new int[]{4, 1, 12, 2, 16, 11, 13, 14, 8, 7};
         Heap h = new Heap(heap);
         //h.increaseKey(3, 13);
-        h.delete();
-        h.insert(21);
+        //h.delete();
+        //h.insert(21);
+        //h.maxHeapify(4);
+        h.buildMaxHeap();
+        h.insert(6);
+
+        h.heapSort();
         Arrays.stream(heap).forEach(System.out::println);
         System.out.println();
         System.out.println();
