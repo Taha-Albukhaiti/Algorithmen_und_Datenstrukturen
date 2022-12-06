@@ -31,7 +31,7 @@ public class QuickSort {
     }
 
     public static void main(String[] args) {
-        int[] arr = {17, 0, 9, 3, 22, 49, 100, 2, 1, 12, 4}; // 3 2 1
+        int[] arr = {17, 9, 3, 22, 49, 100, 2, 1, 12, 4}; // 3 2 1
         quickSort(arr, 0, arr.length - 1);
         Arrays.stream(arr).forEach(System.out::println);
     }
