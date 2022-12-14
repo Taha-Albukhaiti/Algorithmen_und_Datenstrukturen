@@ -9,21 +9,21 @@ public class BubbleSort {
      * O(n^2)
      * m	i	A	 A[i]>A[i+1]	Vertauschen
      * 5	1	(5,3,4,7,3,2)	5>3	ja
-     *      2	(3, 5,4,7,3,2)	5>4	ja
-     *      3	(3,4,5,7,3,2)	5>7	nein
-     *      4	(3,4,5,7,3,2)	7>3	ja
-     *      5	(3,4,5,3,7,2)	7>2	ja
+     * 2	(3, 5,4,7,3,2)	5>4	ja
+     * 3	(3,4,5,7,3,2)	5>7	nein
+     * 4	(3,4,5,7,3,2)	7>3	ja
+     * 5	(3,4,5,3,7,2)	7>2	ja
      * 4	1	(3,4,5,3,2,7)	3>4	nein
-     *      2	(3,4,5,3,2,7)	4>5	nein
-     *      3	(3,4,5,3,2,7)	5>3	ja
-     *      4	(3,4,3,5,2,7)	5>2	ja
+     * 2	(3,4,5,3,2,7)	4>5	nein
+     * 3	(3,4,5,3,2,7)	5>3	ja
+     * 4	(3,4,3,5,2,7)	5>2	ja
      * 3	1	(3,4,3,2,5,7)	3>4	nein
-     *      2	(3,4,3,2,5,7)	4>3	ja
-     *      3	(3,3,4,2,5,7)	4>2	ja
+     * 2	(3,4,3,2,5,7)	4>3	ja
+     * 3	(3,3,4,2,5,7)	4>2	ja
      * 2	1	(3,3,2,4,5,7)	3>3	nein
-     *      2	(3,3,2,4,5,7)	3>2	ja
+     * 2	(3,3,2,4,5,7)	3>2	ja
      * 1	1	(3,2,3,4,5,7)	3>2	ja
-     *          (2,3,3,4,5,7)
+     * (2,3,3,4,5,7)
      *
      * @param arr
      * @return
@@ -66,23 +66,24 @@ public class BubbleSort {
         do {
             ok = false;
             for (int i = 0; i < m; i++) {
+                System.out.println("Vergleiche: " + arr[i] + " > " + arr[i + 1]);
                 if (arr[i] > arr[i + 1]) {
                     ok = true;
                     k = i;
                     int tempo = arr[i];
                     arr[i] = arr[i + 1];
                     arr[i + 1] = tempo;
-                   zaehler++;
+                    System.out.println("Vertauschung: " + arr[i] + " > " + arr[i + 1]);
+                    zaehler++;
                 }
             }
             m = k;
         } while (ok);
-        System.out.println(zaehler);
         return arr;
     }
 
     public static void main(String[] args) {
-        int[] arr = bubbleSort(new int[]{9, 2, 3, 1, 4, 7});
+        int[] arr = bubbleSortSchneller(new int[]{2, 5, 3, 8, 4, 7});
         Arrays.stream(arr).forEach(System.out::println);
     }
 }
