@@ -30,26 +30,26 @@ public class Heap {
         int l = left(i);
         int r = right(i);
         int max;
-        if (l < this.heapSize && this.arr[l] > this.arr[i]) {
+        if (l < heapSize && this.arr[l] > arr[i]) {
             max = l;
         } else {
             max = i;
         }
 
-        if (r < this.heapSize && this.arr[r] > this.arr[max]) {
+        if (r < heapSize && arr[r] > arr[max]) {
             max = r;
         }
 
-        this.swap(this.arr, max, i);
+        swap (arr, max, i) ;
         if (max != i) {
-            this.maxHeapify(max);
+            maxHeapify(max);
         }
 
     }
 
     protected void minHeapify(int i) {
-        int l = this.left(i);
-        int r = this.right(i);
+        int l = left(i);
+        int r = right(i);
         int min;
         if (l < heapSize && arr[l] < arr[i]) {
             min = l;
@@ -74,8 +74,8 @@ public class Heap {
     }
 
     protected void buildMaxHeap() { // O(log n)
-        for (int i = (this.heapSize - 1) / 2; i >= 0; --i) {
-            this.maxHeapify(i);
+        for (int i = (heapSize - 1) / 2; i >= 0; --i) {
+            maxHeapify(i);
         }
 
     }
@@ -145,6 +145,7 @@ public class Heap {
             increaseKey(heapSize - 1, k);
         }else {
             System.out.println("Heap Size ist nicht kleiner als Array.length");
+            // wie kann ich
         }
     }
 
@@ -160,7 +161,10 @@ class HeapSort {
         //h.delete();
         //h.insert(21);
         //h.maxHeapify(4);
+        ///h.maxHeapify(2);
+
         h.buildMaxHeap();
+        Arrays.stream(heap).forEach(System.out::println);
         h.insert(6);
 
         h.heapSort();
