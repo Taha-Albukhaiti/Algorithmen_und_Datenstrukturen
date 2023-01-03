@@ -1,13 +1,13 @@
 package datastructure.trees;
 
 public class Node {
-     Node p;
+    Node p;
     int key;
     String name;
     Node lift;
     Node right;
 
-    public Node(String name, int key){
+    public Node(String name, int key) {
         this.name = name;
         this.key = key;
     }
