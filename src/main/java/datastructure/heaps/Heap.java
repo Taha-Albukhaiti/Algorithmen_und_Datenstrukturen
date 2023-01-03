@@ -30,7 +30,7 @@ public class Heap {
         int l = left(i);
         int r = right(i);
         int max;
-        if (l < heapSize && this.arr[l] > arr[i]) {
+        if (l < heapSize && arr[l] > arr[i]) {
             max = l;
         } else {
             max = i;
@@ -40,8 +40,8 @@ public class Heap {
             max = r;
         }
 
-        swap (arr, max, i) ;
         if (max != i) {
+            swap (arr, max, i);
             maxHeapify(max);
         }
 
@@ -81,14 +81,15 @@ public class Heap {
     }
 
     protected void buildMinHeap() {
-        for (int i = (this.heapSize - 1) / 2; i >= 0; --i) {
-            this.minHeapify(i);
+        for (int i = (heapSize - 1) / 2; i >= 0; --i) {
+            minHeapify(i);
         }
 
     }
 
     protected void heapSort() {
-        for (int i = heapSize - 1; i >= 1; i--) {
+        buildMaxHeap();
+        for (int i = arr.length -1; i >= 1; i--) {
             swap(arr, 0, i);
             heapSize--;
             maxHeapify(0);
@@ -156,7 +157,16 @@ class HeapSort {
 
     public static void main(String[] args) {
         int[] heap = new int[]{4, 1, 12, 2, 16, 11, 13, 14, 8, 7};
+        int[] heap2 = new int[]{16, 4, 10, 14, 7, 9, 3, 2, 8, 1};
         Heap h = new Heap(heap);
+        Heap h2= new Heap(heap2);
+        h2.maxHeapify(1);
+        //h.buildMaxHeap();
+        Arrays.stream(heap2).forEach(System.out::println);
+        System.out.println();
+        h.heapSort();
+        Arrays.stream(heap).forEach(System.out::println);
+        System.out.println();
         //h.increaseKey(3, 13);
         //h.delete();
         //h.insert(21);
