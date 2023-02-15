@@ -7,6 +7,7 @@ import java.util.Arrays;
 public class Heap {
     private int[] arr;
     int heapSize;
+    int s = 0;
 
     public Heap(int[] arr) {
         this.arr = arr;
@@ -29,39 +30,48 @@ public class Heap {
     protected void maxHeapify(int i) {// Θ(n log n) Θ(n)
         int l = left(i);
         int r = right(i);
+
         int max;
         if (l < heapSize && arr[l] > arr[i]) {
             max = l;
+            s++;
         } else {
             max = i;
         }
 
         if (r < heapSize && arr[r] > arr[max]) {
             max = r;
+            s++;
         }
 
         if (max != i) {
             swap (arr, max, i);
+            s++;
             maxHeapify(max);
         }
+
 
     }
 
     protected void minHeapify(int i) {
         int l = left(i);
         int r = right(i);
+
         int min;
         if (l < heapSize && arr[l] < arr[i]) {
             min = l;
+
         } else {
             min = i;
         }
         if (r < heapSize && arr[r] < arr[min]) {
             min = r;
+
         }
 
         swap(arr, min, i);
         if (min != i) {
+
             minHeapify(min);
         }
 
@@ -156,10 +166,13 @@ public class Heap {
 class HeapSort {
 
     public static void main(String[] args) {
-        int[] aa = { 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
+        int[] aa = {10,9,8,7,6,11,5,4,3,2};
+        Arrays.stream(aa).forEach(System.out::println);
+        System.out.println();
         Heap a = new Heap(aa);
         a.buildMaxHeap();
         Arrays.stream(aa).forEach(System.out::println);
+        System.out.println("Vergleiche " + a.s);
         System.out.println();
 
         int[] heap = new int[]{4, 1, 12, 2, 16, 11, 13, 14, 8, 7};
